@@ -10,7 +10,7 @@ versioning=false
 #OPTIONS="--no-cache --force-rm"
 #OPTIONS="--no-cache"
 #OPTIONS="--force-rm"
-OPTIONS="--build-arg DEBIAN_VERSION=latest"
+OPTIONS="--no-cache --force-rm --build-arg VERSION=latest"
 
 docker build ${OPTIONS} -t ivonet/${image}:latest .
 if [ "$?" -eq 0 ] && [ ${deploy} == "true" ]; then

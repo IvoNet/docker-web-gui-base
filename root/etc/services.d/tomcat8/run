@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+exec 2>&1
+
+touch /var/lib/tomcat8/logs/catalina.out
+
+cd /var/lib/tomcat8
+
+exec /usr/bin/java \
+    -Djava.util.logging.config.file=/var/lib/tomcat8/conf/logging.properties \
+    -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
+    -Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC \
+    -classpath /usr/share/tomcat8/bin/bootstrap.jar:/usr/share/tomcat8/bin/tomcat-juli.jar \
+    -Dcatalina.base=/var/lib/tomcat8 -Dcatalina.home=/usr/share/tomcat8 \
+    -Djava.io.tmpdir=/tmp/tomcat8-tmp org.apache.catalina.startup.Bootstrap start
