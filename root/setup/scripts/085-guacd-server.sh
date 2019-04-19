@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 
-$agi $(cat "${GUACD_DIR}"/DEPENDENCIES)
+# Optional dependencies
+$agi libavcodec-dev \
+     libavutil-dev \
+     libswscale-dev \
+     libfreerdp-dev \
+     libpango1.0-dev \
+     libssh2-1-dev \
+     ibtelnet-dev \
+     libvncserver-dev \
+     libpulse-dev \
+     libssl-dev \
+     libvorbis-dev \
+     libwebp-dev
 
-chmod +x ${GUACD_DIR}/bin/*.sh
-${GUACD_DIR}/bin/link-freerdp-plugins.sh ${GUACD_DIR}/lib/freerdp/guac*.so
+#Guacamole Server
+$agi guacd
+

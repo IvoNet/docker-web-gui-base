@@ -13,9 +13,8 @@ ENV HOME="/root"                      \
     DEBIAN_FRONTEND="noninteractive"
 
 COPY root/ /
-
-RUN . /setup/install.sh
-
-EXPOSE 4822 3306 8080
+RUN chmod +x /setup/install.sh && /setup/install.sh && rm -rf /setup
 
 VOLUME ["/var/lib/mysql"]
+EXPOSE 4822 3306 8080
+

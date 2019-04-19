@@ -1,3 +1,3 @@
-#!/usr/bin/with-contenv sh
+#!/usr/bin/with-contenv bash
 
-exec /usr/local/guacamole/sbin/guacd -b 0.0.0.0 -L ${GUACD_LOG_LEVEL:-info} -f
+exec /usr/sbin/guacd -b 0.0.0.0 -L ${GUACD_LOG_LEVEL:-info} -f

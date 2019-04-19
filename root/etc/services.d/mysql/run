@@ -1,0 +1,52 @@
+#!/usr/bin/with-contenv bash
+
+exec 2>&1
+
+echo "[mysql] Starting service..."
+
+mkdir -p /var/run/mysqld/ 2>/dev/null
+mkdir -p /var/log/mysql/  2>/dev/null
+mkdir -p /var/lib/mysql/  2>/dev/null
+mkdir -p ${DATADIR:-/var/lib/mysql}   2>/dev/null
+chown -R mysql:mysql /var/log/mysql/  2>/dev/null
+chown -R mysql:mysql /var/lib/mysql/  2>/dev/null
+chown -R mysql:mysql /var/run/mysqld/ 2>/dev/null
+
+/usr/local/bin/gosu mysql:mysql /usr/sbin/mysqld --user=mysql --datadir="${DATADIR:-/var/lib/mysql}" --daemonize
+
+
+mysql=( mysql --protocol=socket -uroot -hlocalhost --socket=/var/run/mysqld/mysqld.sock -p"${MYSQL_ROOT_PASSWORD:-secret}" )
+
+for i in {30..0}; do
+    if echo 'SELECT 1' | "${mysql[@]}" &> /dev/null; then
+        break
+    fi
+    echo 'MySQL init process in progress...'
+    sleep 1
+done
+if [ "$i" = 0 ]; then
+    echo >&2 'MySQL init process failed.'
+    exit 1
+fi
+
+echo "[mysql] adding root user"
+"${mysql[@]}" <<-EOSQL
+    SET @@SESSION.SQL_LOG_BIN=0;
+
+    ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD:-secret}' ;
+    GRANT ALL ON *.* TO 'root'@'localhost' WITH GRANT OPTION ;
+    DROP DATABASE IF EXISTS test ;
+    FLUSH PRIVILEGES ;
+EOSQL
+
+if [ -f "/mysql-entrypoint-initdb.d/001-create-schema.sql" ]; then
+    echo "[mysql] Creating guacamole database and user..."
+    /usr/local/bin/gosu root "${mysql[@]}" < "/mysql-entrypoint-initdb.d/000-create-db.sql" 2>/dev/null
+    echo "[mysql] Creating guacamole database/schema..."
+    /usr/local/bin/gosu root "${mysql[@]}" < "/mysql-entrypoint-initdb.d/001-create-schema.sql" 2>/dev/null
+    echo "[mysql] Creating guacamole user..."
+    /usr/local/bin/gosu root "${mysql[@]}" < "/mysql-entrypoint-initdb.d/002-create-admin-user.sql" 2>/dev/null
+    rm -f "/mysql-entrypoint-initdb.d/*.sql"
+fi
+
+exec /bin/true
