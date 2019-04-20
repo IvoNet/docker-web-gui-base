@@ -11,9 +11,6 @@ fi
 if [ -z $MYSQL_ROOT_HOST ]; then
     export MYSQL_ROOT_HOST=localhost
 fi
-#if [ -z $MYSQL_DATABASE ]; then
-#    export MYSQL_DATABASE=guacamole
-#fi
 if [ -z $MYSQL_USER ]; then
     export MYSQL_USER=guacadmin
 fi

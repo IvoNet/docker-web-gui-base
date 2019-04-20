@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv sh
 exec 2>&1
-WD=${WIDTH:-1280}
-HT=${HEIGHT:-720}
+WD=${WIDTH:-1920}
+HT=${HEIGHT:-1080}
 
 exec /usr/local/bin/gosu nobody Xvnc4 :1                                                                \
         -geometry ${WD}x${HT}                                                                     \

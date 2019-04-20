@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-image=web-gui
+image=web-gui-idea
 version=0.2
 
 deploy="false"
