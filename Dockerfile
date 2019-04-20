@@ -1,21 +1,17 @@
 ARG VERSION=18.04
 FROM ivonet/ubuntu:${VERSION}
 
-ARG GUACD_DIR=/usr/local/guacamole
-
-ENV HOME="/root"                      \
+ENV DEBIAN_FRONTEND="noninteractive"  \
     LC_ALL="C.UTF-8"                  \
     LANG="en_US.UTF-8"                \
     LANGUAGE="en_US.UTF-8"            \
-    TERM="xterm"                      \
-    LD_LIBRARY_PATH=${GUACD_DIR}/lib  \
-    GUACD_LOG_LEVEL=info              \
-    DEBIAN_FRONTEND="noninteractive"  \
-    DISPLAY=:1
+    TERM="xterm"
+
+ENV DISPLAY=:1
+ENV APPLICATION="DESKTOP_APPLICATION"
 
 COPY root/ /
 RUN chmod +x /setup/install.sh && /setup/install.sh && rm -rf /setup
 
-VOLUME ["/var/lib/mysql"]
-EXPOSE 4822 3306 8080
+EXPOSE 4822 8080
 

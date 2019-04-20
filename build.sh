@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-image=web-gui-idea
-version=0.2
+image=web-gui-base
+version=0.1
 
 deploy="false"
 #deploy="true"
-versioning=false
-#versioning=true
+#versioning=false
+versioning=true
 
 #OPTIONS="--no-cache --force-rm"
 #OPTIONS="--no-cache"

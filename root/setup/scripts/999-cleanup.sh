@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
+echo "Cleaning up stuff..."
 
-
-
+apt-get autoclean
+apt-get autoremove
+apt-get clean
 apt-get purge -y --auto-remove wget
 apt-get clean
 rm -rf /var/lib/apt/lists/*

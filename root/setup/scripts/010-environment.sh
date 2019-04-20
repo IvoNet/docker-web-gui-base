@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export GUACD_DIR=/usr/local/guacamole
+export LD_LIBRARY_PATH=${GUACD_DIR}/lib
 export LC_ALL=C
 export DEBIAN_FRONTEND="noninteractive"
 export PYTHONDONTWRITEBYTECODE=1
