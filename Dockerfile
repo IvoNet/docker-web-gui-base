@@ -8,8 +8,8 @@ ENV DEBIAN_FRONTEND="noninteractive"  \
     TERM="xterm"                      \
     DISPLAY=:1
 
+EXPOSE 4822 8080
 COPY root/ /
 RUN chmod +x /setup/install.sh && /setup/install.sh && rm -rf /setup
 
-EXPOSE 4822 8080
 

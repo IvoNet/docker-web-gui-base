@@ -4,7 +4,12 @@ echo "Cleaning up stuff..."
 apt-get autoclean
 apt-get autoremove
 apt-get clean
-apt-get purge -y --auto-remove wget
+apt-get purge -y --auto-remove unzip \
+     dirmngr \
+     gpg \
+     gnupg \
+     wget
+
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 

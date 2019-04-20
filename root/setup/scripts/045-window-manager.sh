@@ -6,7 +6,8 @@ $agi x11-xserver-utils \
     xfonts-base \
     xfonts-100dpi \
     xfonts-75dpi \
-    libfuse2
+    libfuse2 \
+    menu
 
 mkdir -p /nobody/.cache/openbox/sessions
 mkdir -p /nobody/.config/openbox
