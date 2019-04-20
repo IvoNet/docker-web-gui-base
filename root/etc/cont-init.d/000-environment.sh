@@ -5,7 +5,6 @@ if [[ $(cat /etc/timezone) != $TZ ]] ; then
   export $TZ
 fi
 
-
 if [ -z $DISPLAY ]; then
     export DISPLAY=:1
 fi

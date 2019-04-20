@@ -21,9 +21,7 @@
 -- Table of connection groups. Each connection group has a name.
 --
 
--- added by IvoNet
 USE guacamole_db;
---
 
 CREATE TABLE `guacamole_connection_group` (
 

@@ -5,10 +5,8 @@ ENV DEBIAN_FRONTEND="noninteractive"  \
     LC_ALL="C.UTF-8"                  \
     LANG="en_US.UTF-8"                \
     LANGUAGE="en_US.UTF-8"            \
-    TERM="xterm"
-
-ENV DISPLAY=:1
-ENV APPLICATION="DESKTOP_APPLICATION"
+    TERM="xterm"                      \
+    DISPLAY=:1
 
 COPY root/ /
 RUN chmod +x /setup/install.sh && /setup/install.sh && rm -rf /setup
