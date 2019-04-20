@@ -14,6 +14,12 @@ $agi libavcodec-dev \
      libvorbis-dev \
      libwebp-dev
 
+$agi libguac-client-ssh0 \
+     libguac-client-rdp0 \
+     libguac-client-telnet0 \
+     libguac-client-vnc0 \
+     libguac-dev
+
 #Guacamole Server
 $agi guacd
 

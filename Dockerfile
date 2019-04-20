@@ -10,7 +10,8 @@ ENV HOME="/root"                      \
     TERM="xterm"                      \
     LD_LIBRARY_PATH=${GUACD_DIR}/lib  \
     GUACD_LOG_LEVEL=info              \
-    DEBIAN_FRONTEND="noninteractive"
+    DEBIAN_FRONTEND="noninteractive"  \
+    DISPLAY=:1
 
 COPY root/ /
 RUN chmod +x /setup/install.sh && /setup/install.sh && rm -rf /setup

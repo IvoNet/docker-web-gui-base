@@ -3,6 +3,9 @@
 # test build
 
 ```bash
+
+docker run -it --rm --name test -p 8080:8080 -p 3306:3306 -v $(pwd):/project -e DISPLAY=:1 ivonet/web-gui
+
 docker run -it --rm --name guitrial -v $(pwd)/setup:/setup -v $(pwd):/project -e 8080:8080 -e 4822:4822 ivonet/ubuntu:18.04 /bin/bash
 
 

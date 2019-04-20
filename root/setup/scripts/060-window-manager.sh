@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 # Window manager Openbox
-$agi vnc4server \
-    x11-xserver-utils \
+$agi x11-xserver-utils \
     openbox \
     xfonts-base \
     xfonts-100dpi \
