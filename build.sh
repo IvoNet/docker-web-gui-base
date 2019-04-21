@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 image=web-gui-base
-version=0.6
+version=1.0
 
 deploy="false"
 #deploy="true"
