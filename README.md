@@ -24,30 +24,58 @@ PASSWORD: secret
 So for serious usage of this image you should create your own image based on this one to add the desktop
 application of your choice.
 
-The way to do this is quite easy:
+* Create a directory structure like this (or use the `create-root-structure.sh` script in dockerfiles):
+
+```text
+root
+├── etc
+│   ├── cont-init.d
+│   │   ├── 100-init.sh
+│   │   ├── 110-user-config.sh
+│   │   └── 199-cleanup.sh
+│   └── services.d
+│       ├── your_service_here
+│       │   └── run
+│       └── another_service_here
+│           └── run
+└── startapp.sh
+```
+
+In the `cont-init.d` folder you can create scripts that will be executed during startup 
+before the `service.d` services are started. 
+start numbering from 100 onwards to 999 to make sure of the ordering as they will be executed in order.
+the numbers below 100 are for the base image.
+
+Every service you want to start after the cont-init.d gets its own folder in the `services.d` folder
+and a `run` bash script
+
+the shebang should be `#!/usr/bin/with-contenv bash` for all bash scripts if you want to enable variables
+between scripts (`cont-init.d` and `services.d`)
+
+If you want to know more about this read this [s6-overlay](https://github.com/just-containers/s6-overlay)
+
+* Create your own `Dockerfile`
 
 ```dockerfile
 FROM ivonet/web-gui-base:latest
 
-ADD startapp.sh /startapp.sh
-
+COPY root/ /
 # do your stuff here to add and configure your desktop application
 ```
 
-create a `startapp.sh` script in your project looking something like this:
+create a `startapp.sh` script in your project/root looking something like this:
 
 ```bash
 #!/usr/bin/env bash
 # Openbox default startup script
 while true;
 do
-  # Your startup command should come here
+  # Your startup command(s) should come here
   /usr/bin/xeyes
 done
 ```
 
 build your image and you should be gearing to go...
-
 
 ## Configurable environment variables
 
@@ -74,7 +102,7 @@ Most of the time these variables do not need to be changed often unless you want
 | :----------------------- | :----------- | :------ |
 | WIDTH                    | the width of the screen displayed in the browser | `1920` |
 | HEIGHT                   | the height of the screen displayed in the browser | `1080` |
-| VNC_DEPTH                | specify the pixel depth in bits of the vnc desktop to be created. Options are 8, 15, 16 and 24. [doc](https://tigervnc.org/doc/Xvnc.html) | `16` |
+| VNC_DEPTH                | specify the pixel depth in bits of the vnc desktop to be created. Options are 8, 15, 16 and 24. [doc](https://tigervnc.org/doc/Xvnc.html) | `24` |
 | VNC_DPI                  | the dots per inc for the vnc desktop | `96` |
 | USER_ID                  | the userid for the nobody user  | `99` |
 | GROUP_ID                 | the groupid for the nobody user | `100`|
@@ -144,3 +172,6 @@ docker run                            \
   -e VNC_DEPTH=24                     \
   ivonet/web-gui-base
 ```
+
+# Project structure
+
