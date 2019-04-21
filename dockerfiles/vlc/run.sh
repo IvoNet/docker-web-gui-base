@@ -4,12 +4,9 @@
 pulseaudio --kill 2>/dev/null
 pulseaudio --load=module-native-protocol-tcp --exit-idle-time=-1 --daemon 2>/dev/null
 
-echo "login with: guest/secret"
-
-open http://localhost:8080
 
 docker run                                      \
-    -it                                         \
+    -d                                          \
     --rm                                        \
     --name vlc                                  \
     -e PULSE_SERVER=docker.for.mac.localhost    \
@@ -19,4 +16,6 @@ docker run                                      \
     -e VNC_DEPTH=24                             \
     ivonet/vlc
 
-pulseaudio --kill 2>/dev/null
+echo "Login with: vlc/secret"
+sleep 5
+open http://localhost:8080

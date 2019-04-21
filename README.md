@@ -24,7 +24,7 @@ PASSWORD: secret
 So for serious usage of this image you should create your own image based on this one to add the desktop
 application of your choice.
 
-* Create a directory structure like this (or use the `create-root-structure.sh` script in dockerfiles):
+* Create a directory structure like this:
 
 ```text
 root
@@ -67,7 +67,7 @@ create a `startapp.sh` script in your project/root looking something like this:
 
 ```bash
 #!/usr/bin/env bash
-# Openbox default startup script
+# to make sure the application restarts when closed in the browser
 while true;
 do
   # Your startup command(s) should come here

@@ -1,11 +1,12 @@
 FROM ivonet/web-gui-base:latest
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends\
-     libgl1-mesa-dri \
-	 libgl1-mesa-glx \
-	 vlc \
-  && rm -rf /var/lib/apt/lists/*
+ && apt-get install -y --no-install-recommends\
+    libgl1-mesa-dri \
+    libgl1-mesa-glx \
+    vlc \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
 COPY startapp.sh /startapp.sh
 
