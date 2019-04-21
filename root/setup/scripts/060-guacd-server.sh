@@ -7,7 +7,6 @@ $agi libavcodec-dev \
      libfreerdp-dev \
      libpango1.0-dev \
      libssh2-1-dev \
-     ibtelnet-dev \
      libvncserver-dev \
      libpulse-dev \
      libssl-dev \
@@ -18,7 +17,6 @@ $agi libguac-client-ssh0 \
      libguac-client-rdp0 \
      libguac-client-telnet0 \
      libguac-client-vnc0
-#     libguac-dev
 
 #Guacamole Server
 $agi guacd

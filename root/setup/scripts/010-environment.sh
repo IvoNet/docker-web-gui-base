@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
-export GUACD_DIR=/usr/local/guacamole
-export LD_LIBRARY_PATH=${GUACD_DIR}/lib
-export LC_ALL=C
 export DEBIAN_FRONTEND="noninteractive"
 export PYTHONDONTWRITEBYTECODE=1
+export LC_ALL="C.UTF-8"
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+export TERM="xterm"
+export GUACD_DIR=/usr/local/guacamole
+export LD_LIBRARY_PATH=${GUACD_DIR}/lib
+export DISPLAY=:1
 
 #create a shortcut for this command as it will be used a lot...
 export agi='apt-get install -y -q --no-install-recommends'

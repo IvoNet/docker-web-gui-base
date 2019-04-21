@@ -7,8 +7,7 @@ apt-get clean
 apt-get purge -y --auto-remove unzip \
      dirmngr \
      gpg \
-     gnupg \
-     wget
+     gnupg
 
 apt-get clean
 rm -rf /var/lib/apt/lists/*

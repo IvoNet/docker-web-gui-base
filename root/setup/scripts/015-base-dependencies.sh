@@ -3,6 +3,5 @@
 $agi unzip \
      dirmngr \
      gpg \
-     gnupg \
-     wget
+     gnupg
 
