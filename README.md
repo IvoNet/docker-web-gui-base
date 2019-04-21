@@ -14,8 +14,10 @@ docker run -d --name eyes -p 8080:8080 ivonet/web-gui-base
 
 and goto [http://localhost:8080](http://localhost:8080) to test it out.
 
+```text
 USERNAME: guest
 PASSWORD: secret
+```
 
 # Usage
 
@@ -61,6 +63,8 @@ to make the application look good and give yourself some control over the workin
 | GUACAMOLE_ADMIN_PASSWORD | the guacamole admin passoword | `guacadmin` |
 | GUACAMOLE_USER_NAME      | a guacamole limited user with only access to the defined application | `guest` |
 | GUACAMOLE_USER_PASSWORD  | the password for the limited user | `secret` |
+| PULSE_SERVER             | the server to connect to if you want sound | see section below about `Using audio` |
+
 
 ### Advanced variables
 
@@ -76,6 +80,37 @@ Most of the time these variables do not need to be changed often unless you want
 | GROUP_ID                 | the groupid for the nobody user | `100`|
 | DISPLAY                  | the display number used by openbox. This value probably does not niet to be changed ever unless you get the following error message during startup `Openbox-Message: Failed to open the display from the DISPLAY environment variable.` then you might want to change it to `:0` or some such | `:1` |
 
+## Using audio
+
+If you have a desktop app with sound and you want to be able to hear it outside of your docker container you
+need something special like pulseaudio.
+The base image already has this available but you need to make it available to the host machine by
+adding the following to your startup command:
+
+```bash
+-e PULSE_SERVER=docker.for.mac.localhost  -v ~/.config/pulse:/nobody/.config/pulse
+```
+
+Note: only tested on macOs
+Oh and on the mac you need to install a Pulseaudio server and start it.
+
+Install pulseaudio:
+```bash
+brew install pulseaudio
+```
+
+Start pulseaudio server:
+```bash
+pulseaudio --load=module-native-protocol-tcp --exit-idle-time=-1 --daemon 2>/dev/null
+```
+
+After these steps you should be able to hear sound created inside the docker image on your host machine.
+
+Stop pulseaudio server on host:
+
+```bash
+pulseaudio --kill 2>/dev/null
+```
 
 ## Sample commands
 

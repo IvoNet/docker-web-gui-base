@@ -12,3 +12,7 @@ fi
 
 
 chmod +x /startapp.sh 2>/dev/null
+
+# Fix:
+# for pulseaudio
+/usr/bin/dbus-uuidgen > /var/lib/dbus/machine-id

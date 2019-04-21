@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 echo "Cleaning up stuff..."
 
-apt-get autoclean
-apt-get autoremove
-apt-get clean
 apt-get purge -y --auto-remove unzip \
      dirmngr \
      gpg \
      gnupg
-
+apt-get autoclean
+apt-get autoremove
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 
@@ -18,4 +16,3 @@ rm -f /README.md
 
 find /usr -name '*.pyc' -type f -exec bash -c 'for pyc; do dpkg -S "$pyc" &> /dev/null || rm -vf "$pyc"; done' -- '{}' +
 
-gosu nobody true

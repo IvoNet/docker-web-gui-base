@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-image=web-gui-base
-version=1.0
+image=vlc
+version=0.1
 
 deploy="false"
 #deploy="true"
@@ -10,7 +10,7 @@ versioning=false
 #OPTIONS="--no-cache --force-rm"
 #OPTIONS="--no-cache"
 #OPTIONS="--force-rm"
-OPTIONS="--no-cache --force-rm --build-arg VERSION=18.04"
+#OPTIONS="--no-cache --force-rm --build-arg VERSION=18.04"
 
 docker build ${OPTIONS} -t ivonet/${image}:latest .
 if [ "$?" -eq 0 ] && [ ${deploy} == "true" ]; then
