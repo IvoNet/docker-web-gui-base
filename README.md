@@ -9,7 +9,7 @@ Using this image as a standalone image would serve no purpose but gives you some
 You can try it out:
 
 ```bash
-docker run -d --name eyes -p 8080:8080 ivonet/web-gui-base
+docker run -d --name eyes -p 8080:32000 ivonet/web-gui-base
 ```
 
 and goto [http://localhost:8080](http://localhost:8080) to test it out.
