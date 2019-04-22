@@ -106,7 +106,8 @@ Most of the time these variables do not need to be changed often unless you want
 | VNC_DPI                  | the dots per inc for the vnc desktop | `96` |
 | USER_ID                  | the userid for the nobody user  | `99` |
 | GROUP_ID                 | the groupid for the nobody user | `100`|
-| DISPLAY                  | the display number used by openbox. This value probably does not niet to be changed ever unless you get the following error message during startup `Openbox-Message: Failed to open the display from the DISPLAY environment variable.` then you might want to change it to `:0` or some such | `:1` |
+| DISPLAY                  | the display number used by openbox. This value probably does not need to be changed ever unless you get the following error message during startup `Openbox-Message: Failed to open the display from the DISPLAY environment variable.` then you might want to change it to `:0` or some such | `:1` |
+| SERVER_PORT              | the port on which tomcat (guacamole-client) will run. Note that if you overrule this you also overrule the exposed internal port. | `32000` |
 
 ## Using audio
 
@@ -150,7 +151,7 @@ Start in deamon mode with minimal options:
 ```bash
 docker run -d                         \
   --name gui                          \
-  -p 8080:8080                        \
+  -p 32000:32000                      \
   ivonet/web-gui-base
 ```
 
@@ -160,8 +161,7 @@ docker run                            \
   -it                                 \
   --rm                                \
   --name gui                          \
-  -p 8080:8080                        \
-  -e DISPLAY=:1                       \
+  -p 32000:32000                      \
   -e WIDTH=3440                       \
   -e HEIGHT=1440                      \
   -e APPNAME=eyes                     \
@@ -173,5 +173,20 @@ docker run                            \
   ivonet/web-gui-base
 ```
 
-# Project structure
+# Release Notes
+
+v1.2
+- made the tomcat server port configurable as it ran by default on a wel known port
+- changed default server port to 32000
+- small documentation changes
+- added these release notes
+
+v1.1
+- made the default colour depth 24
+- pulse audio fixes 
+- audio documentation
+- added demo dockerfile
+
+v1.0
+- First working version 
 

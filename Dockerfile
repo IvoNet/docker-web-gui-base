@@ -8,6 +8,6 @@ ENV DISPLAY=:1
 COPY root/ /
 RUN chmod +x /setup/install.sh && /setup/install.sh && rm -rf /setup
 
-EXPOSE 8080
+EXPOSE 32000
 
 
