@@ -175,6 +175,9 @@ docker run                            \
 
 # Release Notes
 
+v1.3
+- leaving gnupg and dirmng as dependencies as I need them often (removed from cleanup)
+
 v1.2
 - made the tomcat server port configurable as it ran by default on a wel known port
 - changed default server port to 32000

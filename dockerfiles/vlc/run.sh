@@ -11,8 +11,8 @@ docker run                                      \
     --name vlc                                  \
     -e PULSE_SERVER=docker.for.mac.localhost    \
     -v ~/.config/pulse:/nobody/.config/pulse    \
-    -p 8080:8080                                \
-    -v /Volumes/video/Series:/video             \
+    -p 8080:32000                               \
+    -v PLACE_WHERE_YOU_HAVE_VIDEOS:/video       \
     -e VNC_DEPTH=24                             \
     ivonet/vlc
 

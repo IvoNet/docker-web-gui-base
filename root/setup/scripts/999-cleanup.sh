@@ -2,9 +2,7 @@
 echo "Cleaning up stuff..."
 
 apt-get purge -y --auto-remove unzip \
-     dirmngr \
      gpg \
-     gnupg
 apt-get autoclean
 apt-get autoremove
 apt-get clean
