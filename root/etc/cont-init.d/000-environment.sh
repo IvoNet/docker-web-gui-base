@@ -10,9 +10,15 @@ if [ -z $DISPLAY ]; then
     export DISPLAY=:1
 fi
 
+export HOME=/nobody
 
 chmod +x /startapp.sh 2>/dev/null
 
 # Fix:
 # for pulseaudio
 /usr/bin/dbus-uuidgen > /var/lib/dbus/machine-id
+
+# Fix:
+# for VNC?!
+mkdir -p /etc/X11/xserver
+touch /etc/X11/xserver/SecurityPolicy

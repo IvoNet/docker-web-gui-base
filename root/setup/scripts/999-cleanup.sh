@@ -14,3 +14,4 @@ rm -f /README.md
 
 find /usr -name '*.pyc' -type f -exec bash -c 'for pyc; do dpkg -S "$pyc" &> /dev/null || rm -vf "$pyc"; done' -- '{}' +
 
+chown -R nobody:users /nobody/

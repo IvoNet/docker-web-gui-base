@@ -177,6 +177,10 @@ docker run                            \
 
 v1.3
 - leaving gnupg and dirmng as dependencies as I need them often (removed from cleanup)
+- Fix a security warning for VNC
+- added dbus-x11 
+- Clean and reinstall alsa-base / pulseaudio (workaround - test in prod...)
+- make nobody files owned by nobody :-)
 
 v1.2
 - made the tomcat server port configurable as it ran by default on a wel known port
