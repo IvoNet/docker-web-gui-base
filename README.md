@@ -139,6 +139,7 @@ Stop pulseaudio server on host:
 
 ```bash
 pulseaudio --kill 2>/dev/null
+killall pulseaudio 2>/dev/null
 ```
 
 ## Sample commands
@@ -174,6 +175,9 @@ docker run                            \
 ```
 
 # Release Notes
+
+v1.4
+- removed audio config as many desktop applications don't need it and it is easy to add later
 
 v1.3
 - leaving gnupg and dirmng as dependencies as I need them often (removed from cleanup)

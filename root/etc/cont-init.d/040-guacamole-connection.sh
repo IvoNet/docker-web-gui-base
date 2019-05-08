@@ -4,7 +4,7 @@ echo "Creating Guacamole connection..."
 
 # Connection name
 if [ -z $APPNAME ]; then
-    export APPNAME=DESKTOP_APPLICATION
+    export APPNAME="DESKTOP_APPLICATION"
     if [[ -e /startapp.sh ]]; then
         if grep -q "/usr/bin/xeyes" "/startapp.sh"; then
           echo "The default /startapp.sh was found so falling back to eyes..."
