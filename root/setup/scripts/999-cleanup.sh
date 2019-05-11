@@ -2,8 +2,6 @@
 echo "Cleaning up stuff..."
 
 apt-get purge -y --auto-remove unzip gpg
-#apt-get autoclean
-#apt-get autoremove
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 rm -f /etc/apt/sources.list.d/temp.list 2>/dev/null
