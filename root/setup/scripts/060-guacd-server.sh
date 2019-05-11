@@ -4,7 +4,6 @@
 $agi libavcodec-dev \
      libavutil-dev \
      libswscale-dev \
-     libfreerdp-dev \
      libpango1.0-dev \
      libssh2-1-dev \
      libvncserver-dev \
@@ -13,10 +12,7 @@ $agi libavcodec-dev \
      libvorbis-dev \
      libwebp-dev
 
-$agi libguac-client-ssh0 \
-     libguac-client-rdp0 \
-     libguac-client-telnet0 \
-     libguac-client-vnc0
+$agi libguac-client-vnc0
 
 #Guacamole Server
 $agi guacd

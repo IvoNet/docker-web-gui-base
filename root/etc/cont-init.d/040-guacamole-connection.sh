@@ -14,5 +14,6 @@ if [ -z $APPNAME ]; then
     echo "APPNAME not set defaulting to: ${APPNAME}"
 fi
 
-sed -i "s~DESKTOP_APPLICATION~$APPNAME~g" /mysql-entrypoint-initdb.d/050-vnc-connection.sql
+sed -i "s~DESKTOP_APPLICATION~$APPNAME~g" /etc/guacamole/user-mapping.xml
 sed -i "s~DESKTOP_APPLICATION~$APPNAME~g" /etc/xrdp/xrdp.ini
+
