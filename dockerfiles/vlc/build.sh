@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-image=vlc
+image=vlc-dev
 version=0.1
 
 deploy="false"

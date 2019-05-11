@@ -22,3 +22,5 @@ chmod +x /startapp.sh 2>/dev/null
 # for VNC?!
 mkdir -p /etc/X11/xserver
 touch /etc/X11/xserver/SecurityPolicy
+
+chown -R root:root /tmp/.X11-unix

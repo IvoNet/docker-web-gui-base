@@ -31,7 +31,7 @@ root
 ├── etc
 │   ├── cont-init.d
 │   │   ├── 100-init.sh
-│   │   ├── 110-user-config.sh
+│   │   ├── 110-user-nl.ivonet.config.sh
 │   │   └── 199-cleanup.sh
 │   └── services.d
 │       ├── your_service_here
@@ -86,11 +86,9 @@ to make the application look good and give yourself some control over the workin
 
 | Variable name            | Description  | Default |
 | :----------------------- | :----------- | :------ |
-| APPNAME                  | the name of the guacamole connection | `DESKTOP_APPLICATION` of you have your own image but did not define a name and `eyes` if you are just testing the base image |
-| GUACAMOLE_ADMIN_USERNAME | the guacamole admin username if you log in with this user you can configure everything | `guacadmin` |
-| GUACAMOLE_ADMIN_PASSWORD | the guacamole admin passoword | `guacadmin` |
-| GUACAMOLE_USER_NAME      | a guacamole limited user with only access to the defined application | `guest` |
-| GUACAMOLE_USER_PASSWORD  | the password for the limited user | `secret` |
+| APPNAME                  | the name of the guacamole connection | `DESKTOP_APPLICATION` if you have your own image but did not define a name and `eyes` if you are just testing the base image |
+| USERNAME                 | the guacamole admin username if you log in with this user you can configure everything | `admin` |
+| PASSWORD                 | the guacamole admin passoword | `secret` |
 | PULSE_SERVER             | the server to connect to if you want sound | see section below about `Using audio` |
 
 
@@ -117,7 +115,7 @@ The base image already has this available but you need to make it available to t
 adding the following to your startup command:
 
 ```bash
--e PULSE_SERVER=docker.for.mac.localhost  -v ~/.config/pulse:/nobody/.config/pulse
+-e PULSE_SERVER=docker.for.mac.localhost  -v ~/.nl.ivonet.config/pulse:/nobody/.nl.ivonet.config/pulse
 ```
 
 Note: only tested on macOs
@@ -177,7 +175,7 @@ docker run                            \
 # Release Notes
 
 v1.4
-- removed audio config as many desktop applications don't need it and it is easy to add later
+- removed audio nl.ivonet.config as many desktop applications don't need it and it is easy to add later
 
 v1.3
 - leaving gnupg and dirmng as dependencies as I need them often (removed from cleanup)

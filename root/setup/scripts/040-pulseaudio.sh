@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# clean and reinstall pulseaudio
-apt-get remove -y --purge alsa-base pulseaudio
-# fixes user folder permissions
-
 $agi pulseaudio \
      alsa-base \
      dbus \

@@ -16,24 +16,21 @@
 
 <user-mapping>
 
-    <authorize username="GUACAMOLE_ADMIN_USERNAME" password="GUACAMOLE_ADMIN_PASSWORD">
-
-        <!-- First authorized connection -->
-        <connection name="VNC - DESKTOP_APPLICATION">
+    <authorize username="USERNAME" password="PASSWORD">
+        <connection name="DESKTOP_APPLICATION">
             <protocol>vnc</protocol>
             <param name="hostname">localhost</param>
             <param name="port">5901</param>
             <param name="enable-audio">true</param>
+            <!--            <param name="color-depth">24</param>-->
+            <!--            <param name="enable-sftp">true</param>-->
+            <!--            <param name="sftp-username">USERNAME</param>-->
+            <!--            <param name="sftp-password">PASSWORD</param>-->
+            <!--            <param name="sftp-port">22</param>-->
+            <!--            <param name="sftp-hostname">localhost</param>-->
+            <!--            <param name="sftp-directory">/sftp</param>-->
+            <!--            <param name="sftp-root-directory">/</param>-->
         </connection>
-
-<!--        &lt;!&ndash; Second authorized connection &ndash;&gt;-->
-<!--        <connection name="RDP - DESKTOP_APPLICATION">-->
-<!--            <protocol>rdp</protocol>-->
-<!--            <param name="hostname">localhost</param>-->
-<!--            <param name="port">3389</param>-->
-<!--            <param name="disable-auth">true</param>-->
-<!--        </connection>-->
-
     </authorize>
 
 </user-mapping>

@@ -12,9 +12,9 @@ docker run                                      \
     -e PULSE_SERVER=docker.for.mac.localhost    \
     -v ~/.config/pulse:/nobody/.config/pulse    \
     -p 8080:32000                               \
-    -v PLACE_WHERE_YOU_HAVE_VIDEOS:/video       \
+    -v /Users/ivonet/dev/ivonet-talks/docker/Docker.Fun:/video       \
     -e VNC_DEPTH=24                             \
-    ivonet/vlc
+    ivonet/vlc-dev
 
 echo "Login with: vlc/secret"
 sleep 5

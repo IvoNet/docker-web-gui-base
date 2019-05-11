@@ -14,6 +14,6 @@ if [ -z $APPNAME ]; then
     echo "APPNAME not set defaulting to: ${APPNAME}"
 fi
 
-sed -i "s~DESKTOP_APPLICATION~$APPNAME~g" /etc/guacamole/user-mapping.xml
-sed -i "s~DESKTOP_APPLICATION~$APPNAME~g" /etc/xrdp/xrdp.ini
+sed -i "s~DESKTOP_APPLICATION~$APPNAME~g" /etc/guacamole/user-mapping.xml     2>/dev/null
+sed -i "s~DESKTOP_APPLICATION~$APPNAME~g" /etc/guacamole/guacamole.properties 2>/dev/null
 
