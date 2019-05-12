@@ -17,21 +17,36 @@
 package nl.ivonet.provider;
 
 import org.apache.guacamole.GuacamoleException;
+import org.apache.guacamole.environment.Environment;
+import org.apache.guacamole.environment.LocalEnvironment;
 import org.apache.guacamole.net.auth.Credentials;
 import org.apache.guacamole.net.auth.simple.SimpleAuthenticationProvider;
+import org.apache.guacamole.properties.StringGuacamoleProperty;
 import org.apache.guacamole.protocol.GuacamoleConfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Don't want to log in on my docker image so created an auto login feature.
+ *
  * https://guacamole.apache.org/doc/gug/custom-auth.html#custom-auth-installing
  * @author Ivo Woltring
  */
 public class DockerAuthenticationProvider extends SimpleAuthenticationProvider {
     @Override
     public Map<String, GuacamoleConfiguration> getAuthorizedConfigurations(final Credentials credentials) throws GuacamoleException {
-        credentials.setUsername("user");
+
+        final Environment environment = new LocalEnvironment();
+        final StringGuacamoleProperty username = new StringGuacamoleProperty() {
+            @Override
+            public String getName() {
+                return "user-name";
+            }
+        };
+        credentials.setUsername(environment.getRequiredProperty(username));
+
+
         final Map<String, GuacamoleConfiguration> configs = new HashMap<>();
         final GuacamoleConfiguration config = new GuacamoleConfiguration();
         config.setConnectionID("vnc");

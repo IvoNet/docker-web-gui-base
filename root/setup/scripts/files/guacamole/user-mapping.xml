@@ -22,14 +22,6 @@
             <param name="hostname">localhost</param>
             <param name="port">5901</param>
             <param name="enable-audio">true</param>
-            <!--            <param name="color-depth">24</param>-->
-            <!--            <param name="enable-sftp">true</param>-->
-            <!--            <param name="sftp-username">USERNAME</param>-->
-            <!--            <param name="sftp-password">PASSWORD</param>-->
-            <!--            <param name="sftp-port">22</param>-->
-            <!--            <param name="sftp-hostname">localhost</param>-->
-            <!--            <param name="sftp-directory">/sftp</param>-->
-            <!--            <param name="sftp-root-directory">/</param>-->
         </connection>
     </authorize>
 

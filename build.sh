@@ -12,6 +12,10 @@ versioning=false
 #OPTIONS="--force-rm"
 OPTIONS="--no-cache --force-rm --build-arg VERSION=18.04"
 
+cd ivonet-guacamole-docker-auto-login
+mvn clean package clean
+cd ..
+
 docker build ${OPTIONS} -t ivonet/${image}:latest .
 if [ "$?" -eq 0 ] && [ ${deploy} == "true" ]; then
     docker push ivonet/${image}:latest
